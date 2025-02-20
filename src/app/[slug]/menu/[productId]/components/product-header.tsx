@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Product } from "@prisma/client";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
