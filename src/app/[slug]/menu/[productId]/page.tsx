@@ -20,7 +20,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
         select: {
           name: true,
           avatarImageUrl: true,
-          slug: true
+          slug: true,
         },
       },
     },
