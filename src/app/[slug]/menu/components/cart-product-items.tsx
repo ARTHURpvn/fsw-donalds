@@ -12,7 +12,8 @@ interface CartProductProps {
 }
 
 const CartProductItems = ({ product }: CartProductProps) => {
-  const { decreaseProductQuantity, increaseProductQuantity } = useContext(CartContext);
+  const { decreaseProductQuantity, increaseProductQuantity, removeProduct } =
+    useContext(CartContext);
   return (
     <div className="flex items-center justify-between">
       {/* Esquerda */}
@@ -31,18 +32,30 @@ const CartProductItems = ({ product }: CartProductProps) => {
 
           {/* Quantidade */}
           <div className="flex items-center gap-1 text-center">
-            <Button variant={"outline"} className="h-7 w-7 rounded-lg" onClick={() => decreaseProductQuantity(product.id)}>
+            <Button
+              variant={"outline"}
+              className="h-7 w-7 rounded-lg"
+              onClick={() => decreaseProductQuantity(product.id)}
+            >
               <ChevronLeftIcon />
             </Button>
             <p className="w-7 text-xs">{product.quantity}</p>
-            <Button variant={"destructive"} className="h-7 w-7 rounded-lg" onClick={() => increaseProductQuantity(product.id)}>
+            <Button
+              variant={"destructive"}
+              className="h-7 w-7 rounded-lg"
+              onClick={() => increaseProductQuantity(product.id)}
+            >
               <ChevronRightIcon />
             </Button>
           </div>
         </div>
       </div>
 
-      <Button className="h-7 w-7 rounded-lg" variant={"outline"}>
+      <Button
+        className="h-7 w-7 rounded-lg"
+        variant={"outline"}
+        onClick={() => removeProduct(product.id)}
+      >
         <TrashIcon />
       </Button>
     </div>
