@@ -106,7 +106,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         decreaseProductQuantity,
         increaseProductQuantity,
         removeProduct,
-        total
+        total,
       }}
     >
       {children}
