@@ -13,6 +13,7 @@ const OrdersPage = async ({ searchParams }: OrdersPageProps) => {
     return <CpfForm />;
   }
   const orders = await db.order.findMany({
+    orderBy: { createdAt: "desc" },
     where: { costumerCPF: removeCpfPunctuation(cpf) },
     include: {
       restaurant: {
