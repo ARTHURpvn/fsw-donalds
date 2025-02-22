@@ -4,13 +4,18 @@ import { Restaurant } from "@prisma/client";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
 import { Button } from "@/components/ui/button";
+
+import { CartContext } from "../contexts/cart";
+import CartSheet from "./cart-sheet";
 
 interface RestaurantHeaderProps {
   restaurant: Pick<Restaurant, "coverImageUrl" | "name">;
 }
 const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
+  const { toggleCart } = useContext(CartContext);
   const router = useRouter();
   const handleBackClick = () => router.back();
 
@@ -35,10 +40,12 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
           variant={"secondary"}
           size={"icon"}
           className="absolute right-4 top-4 z-10 rounded-full"
+          onClick={toggleCart}
         >
           <ScrollTextIcon />
         </Button>
       </div>
+      <CartSheet />
     </div>
   );
 };
